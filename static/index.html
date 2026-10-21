@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Van Mitra</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='24' r='20' fill='%234E8F45'/%3E%3Crect x='26' y='34' width='12' height='26' rx='3' fill='%237A5434'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body data-state="IDLE">
+
+<div class="layout">
+  <!-- ============================================================ KIOSK SCREEN (portrait) -->
+  <main class="stage" id="stage" aria-live="polite">
+    <div class="scene" aria-hidden="true">
+      <svg class="hills" viewBox="0 0 900 600" preserveAspectRatio="xMidYMax slice">
+        <path class="h1" d="M0 300 C120 210 210 250 300 205 C390 160 470 230 560 190 C660 145 760 215 900 170 L900 600 L0 600Z"/>
+        <path class="h2" d="M0 360 C140 300 240 345 360 300 C470 260 560 330 660 290 C760 255 830 300 900 280 L900 600 L0 600Z"/>
+        <path class="river" d="M0 455 C160 430 300 470 450 448 C600 426 740 462 900 440 L900 482 C740 500 600 466 450 488 C300 510 160 470 0 495Z"/>
+        <path class="h3" d="M0 470 C160 450 300 492 450 475 C600 458 740 494 900 470 L900 600 L0 600Z"/>
+      </svg>
+      <div class="fireflies"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+
+    <header class="title">
+      <h1>Van Mitra</h1>
+      <p class="odia" lang="or">ବନ ମିତ୍ର</p>
+      <p class="sub">Friend of the forest, Angul Forest Division</p>
+    </header>
+
+    <div class="character" id="character">
+      <div class="aura"></div>
+      <div class="rings"><span></span><span></span></div>
+      <svg viewBox="0 -30 400 510" class="tree" role="img" aria-label="Van Mitra, a friendly talking tree">
+        <defs>
+          <radialGradient id="g-canopy" cx="40%" cy="30%" r="75%">
+            <stop offset="0" stop-color="#8CC45E"/><stop offset=".55" stop-color="#4E8F45"/><stop offset="1" stop-color="#2C6236"/>
+          </radialGradient>
+          <linearGradient id="g-trunk" x1="0" x2="1">
+            <stop offset="0" stop-color="#8A6140"/><stop offset=".55" stop-color="#76502F"/><stop offset="1" stop-color="#5A3B22"/>
+          </linearGradient>
+        </defs>
+
+        <!-- ground & roots -->
+        <ellipse cx="200" cy="458" rx="160" ry="20" fill="#2E5530"/>
+        <ellipse cx="200" cy="452" rx="120" ry="12" fill="#3C6B37"/>
+        <g fill="#5E3F25">
+          <path d="M150 440 C120 448 92 452 66 462 C96 462 128 458 160 452Z"/>
+          <path d="M250 440 C280 448 308 452 334 462 C304 462 272 458 240 452Z"/>
+          <path d="M190 448 C186 456 178 462 170 468 L206 468 C202 462 200 456 200 448Z"/>
+        </g>
+
+        <!-- arms (branches) -->
+        <g class="arm arm-l">
+          <path d="M156 318 C132 306 112 292 92 268" stroke="#6B4729" stroke-width="13" stroke-linecap="round" fill="none"/>
+          <path d="M112 292 C100 292 90 298 80 306" stroke="#6B4729" stroke-width="7" stroke-linecap="round" fill="none"/>
+          <ellipse cx="84" cy="256" rx="14" ry="22" transform="rotate(-35 84 256)" fill="#5FA04A"/>
+          <ellipse cx="70" cy="306" rx="10" ry="16" transform="rotate(-70 70 306)" fill="#78B356"/>
+        </g>
+        <g class="arm arm-r">
+          <path d="M244 318 C268 306 288 292 308 268" stroke="#6B4729" stroke-width="13" stroke-linecap="round" fill="none"/>
+          <path d="M288 292 C300 292 310 298 320 306" stroke="#6B4729" stroke-width="7" stroke-linecap="round" fill="none"/>
+          <ellipse cx="316" cy="256" rx="14" ry="22" transform="rotate(35 316 256)" fill="#5FA04A"/>
+          <ellipse cx="330" cy="306" rx="10" ry="16" transform="rotate(70 330 306)" fill="#78B356"/>
+        </g>
+
+        <!-- trunk -->
+        <path d="M118 458 C142 432 148 392 150 340 C151 300 152 268 156 226 L244 226 C248 268 249 300 250 340 C252 392 258 432 282 458Z" fill="url(#g-trunk)"/>
+        <g stroke="#5A3B22" stroke-width="3" stroke-linecap="round" fill="none" opacity=".55">
+          <path d="M168 400 C172 418 170 432 164 446"/><path d="M232 396 C228 414 232 430 238 446"/>
+          <path d="M200 404 C198 420 202 436 200 448"/><path d="M164 262 C168 276 166 286 162 296"/>
+          <path d="M238 258 C234 272 238 284 240 294"/>
+        </g>
+
+        <!-- canopy -->
+        <g class="canopy">
+          <g fill="#2C6236">
+            <circle cx="112" cy="176" r="64"/><circle cx="288" cy="176" r="64"/><circle cx="200" cy="208" r="72"/>
+          </g>
+          <g fill="url(#g-canopy)">
+            <circle cx="200" cy="118" r="98"/><circle cx="128" cy="160" r="66"/><circle cx="272" cy="160" r="66"/>
+            <circle cx="150" cy="86" r="58"/><circle cx="252" cy="84" r="60"/><circle cx="200" cy="190" r="68"/>
+          </g>
+          <g fill="#9BD06A" opacity=".55">
+            <circle cx="160" cy="70" r="20"/><circle cx="118" cy="140" r="14"/><circle cx="236" cy="62" r="16"/>
+          </g>
+          <!-- sal leaves on the edge -->
+          <g class="leaves">
+            <g class="leaf" style="--d:0s"><ellipse cx="66" cy="132" rx="12" ry="22" transform="rotate(-50 66 132)" fill="#5FA04A"/><path d="M56 122 L77 141" stroke="#3C7A36" stroke-width="2"/></g>
+            <g class="leaf" style="--d:.7s"><ellipse cx="334" cy="128" rx="12" ry="22" transform="rotate(50 334 128)" fill="#5FA04A"/><path d="M344 118 L323 138" stroke="#3C7A36" stroke-width="2"/></g>
+            <g class="leaf" style="--d:1.3s"><ellipse cx="200" cy="18" rx="12" ry="22" fill="#78B356"/><path d="M200 2 L200 34" stroke="#3C7A36" stroke-width="2"/></g>
+            <g class="leaf" style="--d:.4s"><ellipse cx="96" cy="222" rx="10" ry="18" transform="rotate(-110 96 222)" fill="#4E8F45"/></g>
+            <g class="leaf" style="--d:1s"><ellipse cx="304" cy="222" rx="10" ry="18" transform="rotate(110 304 222)" fill="#4E8F45"/></g>
+          </g>
+          <!-- mahua flowers -->
+          <g fill="#F3E3B5"><circle cx="138" cy="112" r="4.5"/><circle cx="264" cy="128" r="4.5"/><circle cx="214" cy="56" r="4"/><circle cx="104" cy="186" r="4"/><circle cx="298" cy="190" r="4.5"/><circle cx="182" cy="160" r="3.5"/></g>
+        </g>
+
+        <!-- face -->
+        <g class="face">
+          <g class="brows" stroke="#3A2414" stroke-width="4" stroke-linecap="round" fill="none">
+            <path class="brow-l" d="M166 292 C172 287 182 287 188 290"/><path class="brow-r" d="M212 290 C218 287 228 287 234 292"/>
+          </g>
+          <g class="eye eye-l"><ellipse cx="178" cy="316" rx="13" ry="15" fill="#FFF8EA"/><g class="pupil"><circle cx="179" cy="318" r="7" fill="#2A1A0E"/><circle cx="182" cy="314" r="2.6" fill="#fff"/></g></g>
+          <g class="eye eye-r"><ellipse cx="222" cy="316" rx="13" ry="15" fill="#FFF8EA"/><g class="pupil"><circle cx="221" cy="318" r="7" fill="#2A1A0E"/><circle cx="224" cy="314" r="2.6" fill="#fff"/></g></g>
+          <ellipse cx="160" cy="342" rx="10" ry="6" fill="#E59A86" opacity=".55"/><ellipse cx="240" cy="342" rx="10" ry="6" fill="#E59A86" opacity=".55"/>
+          <path class="smile" d="M186 350 C194 358 206 358 214 350" stroke="#3A2414" stroke-width="4" stroke-linecap="round" fill="none"/>
+          <g class="mouth" id="mouth">
+            <ellipse cx="200" cy="356" rx="15" ry="11" fill="#3A1F12"/>
+            <ellipse cx="200" cy="362" rx="8" ry="4" fill="#C9675A"/>
+          </g>
+        </g>
+
+        <!-- thinking: three little seeds circling above the crown -->
+        <g class="think" fill="#F3E3B5"><circle cx="200" cy="-14" r="7"/><circle cx="200" cy="-14" r="7"/><circle cx="200" cy="-14" r="7"/></g>
+      </svg>
+    </div>
+
+    <section class="talk">
+      <p class="asked" id="asked"></p>
+      <p class="said" id="said"></p>
+    </section>
+
+    <footer class="prompt">
+      <div class="btn-glyph" aria-hidden="true"><span class="led"></span><span class="cap"></span></div>
+      <p id="hint">Come closer and say hello!</p>
+    </footer>
+  </main>
+
+  <!-- ============================================================ DEMO PANEL ("How I answered") -->
+  <aside class="panel" id="panel" aria-label="How Van Mitra answered">
+    <div class="panel-head">
+      <h2>How I answered</h2>
+      <button class="x" id="panel-close" type="button">Close</button>
+    </div>
+
+    <div class="block">
+      <h3>System</h3>
+      <ul class="chips" id="chips"></ul>
+    </div>
+
+    <form class="block ask" id="ask-form" autocomplete="off">
+      <h3><label for="ask-input">Ask by typing</label></h3>
+      <div class="row"><input id="ask-input" placeholder="e.g. What does Satkosia mean?" maxlength="300"><button>Ask</button></div>
+      <div class="samples" id="samples"></div>
+    </form>
+
+    <div class="block" id="trace-block">
+      <h3>Last question</h3>
+      <div id="trace" class="trace"><p class="empty">Ask Van Mitra something. Every step it takes will appear here: what it heard, which passages it found, and why it answered or declined.</p></div>
+    </div>
+
+    <div class="block keys">
+      <h3>Keyboard</h3>
+      <dl>
+        <dt><kbd>Space</kbd> hold</dt><dd>Press &amp; Ask button: hold, speak, release</dd>
+        <dt><kbd>P</kbd></dt><dd>Visitor arrives / leaves (presence sensor)</dd>
+        <dt><kbd>T</kbd></dt><dd>Type a question</dd>
+        <dt><kbd>H</kbd></dt><dd>Show or hide this panel</dd>
+        <dt><kbd>F</kbd></dt><dd>Full screen</dd>
+      </dl>
+      <p class="presence" id="presence-state">Visitor present: no</p>
+    </div>
+  </aside>
+</div>
+
+<button class="panel-toggle" id="panel-open" type="button" aria-label="Show how I answered">i</button>
+
+<script src="/static/app.js"></script>
+</body>
+</html>

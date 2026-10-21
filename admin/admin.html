@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Van Mitra Admin</title>
+<meta http-equiv="refresh" content="60">
+<style>
+  :root{--bg:#0f1f17;--card:#16291f;--ink:#e8f1ea;--muted:#9db5a5;--accent:#7cc47f;--amber:#e8b04a;--red:#ff9b8a;--line:#264535}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;padding:24px 16px 48px}
+  .wrap{max-width:1100px;margin:0 auto}
+  header{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+  h1{margin:0;font-size:22px} a{color:var(--accent)}
+  .muted{color:var(--muted);font-size:13px}
+  .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:16px}
+  .tile{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+  .tile b{display:block;font-size:28px;font-variant-numeric:tabular-nums;line-height:1.2}
+  .tile span{color:var(--muted);font-size:13px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media (max-width:800px){.grid{grid-template-columns:1fr}}
+  section{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;overflow:auto}
+  h2{font-size:15px;margin:0 0 10px;color:var(--accent);font-weight:600}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  td,th{padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+  th{color:var(--muted);font-weight:500;font-size:12px;text-transform:uppercase;letter-spacing:.04em}
+  td.n{text-align:right;font-variant-numeric:tabular-nums}
+  .pill{display:inline-block;padding:1px 8px;border-radius:99px;font-size:12px;background:#21402f}
+  .pill.fallback{background:#4a2a22;color:var(--red)} .pill.not_heard,.pill.error{background:#4a3a1c;color:var(--amber)}
+  .ok{color:var(--accent)} .bad{color:var(--red)}
+  .full{grid-column:1/-1}
+</style></head>
+<body><div class="wrap">
+<header>
+  <div><h1>Van Mitra · Visitor statistics</h1><div class="muted">Refreshes every minute · all data stays on this computer</div></div>
+  <a href="/admin/logout">Log out</a>
+</header>
+
+<div class="tiles">
+  <div class="tile"><b>{{ s.visitors_today }}</b><span>Visitors today</span></div>
+  <div class="tile"><b>{{ s.today }}</b><span>Questions today</span></div>
+  <div class="tile"><b>{{ s.total }}</b><span>Questions (all time)</span></div>
+  <div class="tile"><b>{{ (s.by_route.get('rag',0) + s.by_route.get('pinned',0)) }}</b><span>Answered from knowledge</span></div>
+  <div class="tile"><b>{{ s.by_route.get('fallback',0) }}</b><span>Not in knowledge yet</span></div>
+  <div class="tile"><b>{{ '%.1f'|format(s.avg_total_ms/1000) }} s</b><span>Avg. answer time</span></div>
+</div>
+
+<div class="grid">
+  <section class="full">
+    <h2>Questions Van Mitra could not answer — add content for these</h2>
+    {% if s.unanswered %}
+    <table><tr><th>Time</th><th>Question</th></tr>
+    {% for r in s.unanswered %}<tr><td class="muted">{{ r.ts }}</td><td>{{ r.transcript }}</td></tr>{% endfor %}
+    </table>
+    {% else %}<div class="muted">None yet.</div>{% endif %}
+  </section>
+
+  <section>
+    <h2>Most asked questions</h2>
+    {% if s.top %}
+    <table><tr><th>Question</th><th class="n">Times</th></tr>
+    {% for q, n in s.top %}<tr><td>{{ q }}</td><td class="n">{{ n }}</td></tr>{% endfor %}</table>
+    {% else %}<div class="muted">No answered questions yet.</div>{% endif %}
+  </section>
+
+  <section>
+    <h2>Last 14 days</h2>
+    {% if s.per_day %}
+    <table><tr><th>Day</th><th class="n">Visitors</th><th class="n">Questions</th></tr>
+    {% for d in s.per_day %}<tr><td>{{ d.day }}</td><td class="n">{{ d.visitors }}</td><td class="n">{{ d.questions }}</td></tr>{% endfor %}</table>
+    {% else %}<div class="muted">No data yet.</div>{% endif %}
+  </section>
+
+  <section class="full">
+    <h2>Recent interactions</h2>
+    <table><tr><th>Time</th><th>Via</th><th>Question</th><th>Result</th><th>Answer</th><th class="n">ms</th></tr>
+    {% for r in s.recent %}<tr><td class="muted">{{ r.ts[11:] }}</td><td>{{ r.source }}</td><td>{{ r.transcript }}</td>
+      <td><span class="pill {{ r.route }}">{{ r.route }}</span></td><td class="muted">{{ r.answer }}</td><td class="n">{{ r.total_ms or '' }}</td></tr>{% endfor %}
+    </table>
+  </section>
+
+  <section class="full">
+    <h2>System health</h2>
+    <table>
+      <tr><td>Speech-to-text</td><td class="{{ 'ok' if status.stt.ok else 'bad' }}">{{ status.stt.model }} — {{ status.stt.detail }}</td></tr>
+      <tr><td>Language model</td><td class="{{ 'ok' if status.llm.ok else 'bad' }}">{{ status.llm.model }} — {{ status.llm.detail }}</td></tr>
+      <tr><td>Voice</td><td class="{{ 'ok' if status.tts.ok else 'bad' }}">{{ status.tts.engine }} ({{ status.tts.voice }})</td></tr>
+      <tr><td>Knowledge</td><td class="ok">{{ status.knowledge.chunks }} passages from {{ status.knowledge.files|length }} documents · {{ status.knowledge.mode }} · built {{ status.knowledge.built_at }}</td></tr>
+      <tr><td>Hardware</td><td class="{{ 'ok' if status.hardware.ok else 'bad' }}">{{ status.hardware.mode }} — {{ status.hardware.detail }}</td></tr>
+    </table>
+  </section>
+</div>
+</div></body></html>

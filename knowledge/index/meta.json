@@ -1,0 +1,14 @@
+{
+ "built_at": "2026-10-21 15:56:08",
+ "n_chunks": 13,
+ "n_pinned": 9,
+ "files": [
+  "01_satkosia_tiger_reserve.md",
+  "02_angul_district_and_forests.md",
+  "03_elephants_and_safety.md",
+  "04_gharial_and_river_life.md",
+  "05_trees_and_birds.md",
+  "06_forest_fire_and_visitor_rules.md"
+ ],
+ "embed_model": "BAAI/bge-small-en-v1.5"
+}

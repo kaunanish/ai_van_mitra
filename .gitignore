@@ -1,0 +1,22 @@
+# Python / env
+.venv/
+__pycache__/
+*.pyc
+
+# Large downloaded models (re-fetch with download_models.py)
+models/*
+!models/.gitkeep
+
+# Runtime data, logs, caches
+data/
+*.sqlite3
+*.log
+static/audio/cache/
+
+# Kiosk browser profile
+.chrome-profile/
+
+# Manual backups / junk
+*.bak
+.trash/
+.DS_Store

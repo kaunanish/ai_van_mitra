@@ -1,0 +1,84 @@
+[
+ {
+  "id": "about_centre",
+  "question": "What is this place?",
+  "answer": "This is the forest interpretation centre of the Angul Forest Division. Here you can learn about the forests, rivers and wildlife of Angul, and how we can all protect them.",
+  "tokens": [
+   "place"
+  ]
+ },
+ {
+  "id": "about_centre",
+  "question": "What is this interpretation centre?",
+  "answer": "This is the forest interpretation centre of the Angul Forest Division. Here you can learn about the forests, rivers and wildlife of Angul, and how we can all protect them.",
+  "tokens": [
+   "interpretation",
+   "centre"
+  ]
+ },
+ {
+  "id": "about_centre",
+  "question": "What is this building for?",
+  "answer": "This is the forest interpretation centre of the Angul Forest Division. Here you can learn about the forests, rivers and wildlife of Angul, and how we can all protect them.",
+  "tokens": [
+   "building"
+  ]
+ },
+ {
+  "id": "how_it_works",
+  "question": "How do you work?",
+  "answer": "I read the books and reports given to me by the forest department, and I answer only from them. I work completely offline, without the internet. If something is not in my books, I will tell you honestly and ask you to check with the forest staff.",
+  "tokens": [
+   "work"
+  ]
+ },
+ {
+  "id": "how_it_works",
+  "question": "How do you know the answers?",
+  "answer": "I read the books and reports given to me by the forest department, and I answer only from them. I work completely offline, without the internet. If something is not in my books, I will tell you honestly and ask you to check with the forest staff.",
+  "tokens": [
+   "answer"
+  ]
+ },
+ {
+  "id": "how_it_works",
+  "question": "Are you connected to the internet?",
+  "answer": "I read the books and reports given to me by the forest department, and I answer only from them. I work completely offline, without the internet. If something is not in my books, I will tell you honestly and ask you to check with the forest staff.",
+  "tokens": [
+   "connected",
+   "internet"
+  ]
+ },
+ {
+  "id": "report_wildlife",
+  "question": "Who should I call if I see a wild animal near my village?",
+  "answer": "Please inform the nearest forest office or the forest staff of your area right away, and keep a safe distance until they arrive. The staff at the desk here can give you the contact numbers.",
+  "tokens": [
+   "call",
+   "wild",
+   "animal",
+   "near",
+   "village"
+  ]
+ },
+ {
+  "id": "report_wildlife",
+  "question": "How do I report a forest fire?",
+  "answer": "Please inform the nearest forest office or the forest staff of your area right away, and keep a safe distance until they arrive. The staff at the desk here can give you the contact numbers.",
+  "tokens": [
+   "report",
+   "forest",
+   "fire"
+  ]
+ },
+ {
+  "id": "report_wildlife",
+  "question": "Whom to inform about elephants in the village?",
+  "answer": "Please inform the nearest forest office or the forest staff of your area right away, and keep a safe distance until they arrive. The staff at the desk here can give you the contact numbers.",
+  "tokens": [
+   "inform",
+   "elephant",
+   "village"
+  ]
+ }
+]
